@@ -72,7 +72,7 @@ async def get_movies(
     ]
 
     # Generate pagination links
-    base_url = "/api/v1/theater/movies/"
+    base_url = "/theater/movies/"
     prev_page = None
     next_page = None
 
