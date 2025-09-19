@@ -46,6 +46,7 @@ async def get_movies(
     # Get movies for the current page
     movies_result = await db.execute(
         select(MovieModel)
+        .order_by(MovieModel.id)
         .offset(offset)
         .limit(per_page)
     )
@@ -65,7 +66,7 @@ async def get_movies(
             status=movie.status,
             orig_lang=movie.orig_lang,
             budget=float(movie.budget),
-            revenue=movie.revenue,
+            revenue=float(movie.revenue),
             country=movie.country
         )
         for movie in movies
@@ -124,6 +125,6 @@ async def get_movie_by_id(
         status=movie.status,
         orig_lang=movie.orig_lang,
         budget=float(movie.budget),
-        revenue=movie.revenue,
+        revenue=float(movie.revenue),
         country=movie.country
     )
